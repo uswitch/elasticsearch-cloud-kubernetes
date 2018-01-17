@@ -22,4 +22,6 @@ grant {
   permission java.io.FilePermission "<<ALL FILES>>", "read,execute,readlink";
   permission java.net.NetPermission "getProxySelector";
   permission java.net.NetPermission "getCookieHandler";
+  // k8s client opens socket connections for discovery
+  permission java.net.SocketPermission "*", "connect,resolve";
 };

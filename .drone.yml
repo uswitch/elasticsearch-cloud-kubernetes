@@ -1,0 +1,14 @@
+pipeline:
+  build:
+    image: maven
+    pull: true
+    commands:
+      - mvn clean
+      - mvn verify
+
+  github_release:
+    image: plugins/github-release
+    secrets: [ github_token ]
+    files: target/releases/elasticsearch-cloud-kubernetes*.zip
+    when:
+      event: tag
